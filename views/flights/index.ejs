@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Flights</title>
+</head>
+<body>
+    <h1>List of flights</h1>
+    <a href="/flights/new">Add a New Flight</a>
+    <a href="/">Home</a>
+
+    <% flights.forEach(function(flight){ %>
+        <p>| <%= flight.airline %> --- <%= flight.airport %> --- <%= flight.flightNo %> --- <%= flight.departs %> | <a href="/flights/<%= flight._id %>">(See Details)</a></p>
+    <% }) %>
+
+</body>
+</html>

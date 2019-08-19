@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title> <%= title %> </title>
+</head>
+<body>
+    <h1><%= title %></h1>
+    <hr>
+    <a href="/flights">Go Back to All Flights</a>
+    <a href="/flights/<%= flight.id %>/tickets/new">Add a new ticket for this flight</a>
+    <hr>
+    <p> Airline: <%= flight.airline %> </p>
+    <p> Flight #: <%= flight.flightNo %> </p>
+    <p> Departing: <%= flight.departs %> </p>
+    <p> Airport:  <%= flight.airport %> </p>
+
+    <h2>Tickets For This Flight</h2>
+    <% tickets.forEach(function(t) { %>
+        <p>Seat: <%= t.seat %></p>
+        <p>Price: <%= t.price %></p>
+    <% }); %>
+    <h3>Flight Info</h3>
+    <% if(flight.destinations.length > 0) { %>
+         <% flight.destinations.forEach(function(d) { %>
+            <p>Departing: <%= d.airport %> </p>
+            <p>Arriving: <%= d.arrival %> </p>
+        <% }) %>
+    <% } else { %>
+        <p>There are no destinations for this flight</p>
+    <% } %>
+    <form action="/flights/<%= flight._id %>/destinations" method="POST">
+        <select name="airport">
+            <option value="AUS">AUS</option>
+            <option value="DAL">DAL</option>
+            <option value="LAX">LAX</option>
+            <option value="SEA">SEA</option>
+        </select>
+        <input type="datetime-local" name="arrival">
+        <input type="submit" value="Add Destination">
+    </form>
+</body>
+</html>
