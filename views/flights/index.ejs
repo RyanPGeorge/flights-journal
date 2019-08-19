@@ -10,7 +10,7 @@
     <h1>List of flights</h1>
     <a href="/flights/new">Add a New Flight</a>
     <a href="/">Home</a>
-
+    <p>Airline --- Airport --- Flight Number --- Departing</p>
     <% flights.forEach(function(flight){ %>
         <p>| <%= flight.airline %> --- <%= flight.airport %> --- <%= flight.flightNo %> --- <%= flight.departs %> | <a href="/flights/<%= flight._id %>">(See Details)</a></p>
     <% }) %>
